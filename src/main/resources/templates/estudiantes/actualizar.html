@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Actualizar Estudiante</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Actualizar Estudiante</h1>
+
+    <form th:action="@{/estudiantes/actualizar/{id}(id=${estudiante.id})}" method="post">
+        <div class="form-group">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" class="form-control" th:value="${estudiante.nombre}" name="nombre" required>
+        </div>
+
+        <div class="form-group">
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" class="form-control" th:value="${estudiante.apellido}" name="apellido" required>
+        </div>
+
+        <div class="form-group">
+            <label for="curso">Curso:</label>
+            <select id="curso" class="form-control" name="curso.id" th:value="${estudiante.curso.id}">
+                <option th:each="curso : ${cursos}" th:value="${curso.id}" th:text="${curso.nombre}"></option>
+            </select>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Actualizar</button>
+    </form>
+</div>
+
+</body>
+</html>
+
